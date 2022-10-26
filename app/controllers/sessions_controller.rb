@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    account=AccountTable.find_by(userId: params[:session][:userId].downcase)
-    if account && account.authenticate(paramas[:session][:password])
+    account=AccountTable.find_by(userId: params[:session][:userId])
+    # puts account
+    if account && account.authenticate(params[:session][:password_digest])
       log_in account
       redirect_to root_url
     else
