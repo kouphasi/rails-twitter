@@ -1,0 +1,2 @@
+class AccountTable < ApplicationRecord
+end
