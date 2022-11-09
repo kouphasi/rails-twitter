@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def setup
     puts "setup started"
+    puts params
     @account = AccountTable.new(name:params[:session][:name], password:params[:session][:password])
     if @account.save
       redirect_to root_url
