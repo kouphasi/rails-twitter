@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
         t = tweet_params
         tweet = Tweet.new(t)
         # puts tweet
-        # tweet.user_id = current_user.id
+        tweet.user_id = current_user.id
         # puts tweet
         puts tweet.save!
         if tweet.save
