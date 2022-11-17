@@ -1,3 +1,11 @@
 <h2>タスク一覧</h2>
 <%= link_to "投稿", new_path %>
+<div>
+    <%= @tweets.each do |t| %>
+        <div>
+            <%= t.account_table.name %>
+            <%= t.contents %>
+        </div>
+    <% end %>
+</div>
 <%= link_to "ログアウト", logout_path, method: :delete %>
