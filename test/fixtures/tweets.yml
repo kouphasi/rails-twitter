@@ -2,8 +2,8 @@
 
 one:
   contents: MyText
-  user: one
+  account_table: one
 
 two:
   contents: MyText
-  user: two
+  account_table: two

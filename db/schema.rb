@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_06_100503) do
+ActiveRecord::Schema.define(version: 2022_11_12_020500) do
 
   create_table "account_tables", force: :cascade do |t|
     t.string "name"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2022_11_06_100503) do
 
   create_table "tweets", force: :cascade do |t|
     t.text "contents"
-    t.integer "user_id", null: false
+    t.integer "account_table_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tweets_on_user_id"
+    t.index ["account_table_id"], name: "index_tweets_on_account_table_id"
   end
 
-  add_foreign_key "tweets", "users"
+  add_foreign_key "tweets", "account_tables"
 end

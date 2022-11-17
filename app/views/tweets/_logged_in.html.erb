@@ -3,8 +3,8 @@
 <div>
     <%= @tweets.each do |t| %>
         <div>
-        <%= t.contents %>
-        <%= t.created_at %>
+            <%= t.account_table.name %>
+            <%= t.contents %>
         </div>
     <% end %>
 </div>
