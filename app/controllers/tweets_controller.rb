@@ -30,4 +30,8 @@ class TweetsController < ApplicationController
     # def index
     #     @tweets = Tweet.all
     # end
+
+    def comments
+        @tweet = Tweet.find(params[:id])
+    end
 end

@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get "/new", to: "tweets#newp"
   post "/new", to: "tweets#add"
 
+  #  "/userpage", to: "relationships#user_page"
+  get "/userpage/:id", to: "relationships#account", as: "accountpage"
+  get "/commentpage/:id", to:"tweets#comments", as: "commentpage"
+
   resources :account_table, only:[:index, :show, :edit, :update] do
     member do
       get :follows, :followers
