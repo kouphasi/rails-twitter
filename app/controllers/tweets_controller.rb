@@ -30,4 +30,9 @@ class TweetsController < ApplicationController
     # def index
     #     @tweets = Tweet.all
     # end
+
+    def comments
+        @tweet = Tweet.find(params[:id])
+        @comment = Comment.create(account_table_id: current_user.id, tweet_id: @tweet.id)
+    end
 end
