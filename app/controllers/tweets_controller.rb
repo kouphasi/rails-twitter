@@ -33,6 +33,6 @@ class TweetsController < ApplicationController
 
     def comments
         @tweet = Tweet.find(params[:id])
-        @comment = Comment.create(account_table_id: current_user.id, tweet_id: @tweet.id)
+        @comment = Comment.where(tweet_id: params[:id])
     end
 end

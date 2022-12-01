@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post "/userpage/follow", to: "relationships#create"
   get "/commentpage/:id", to:"tweets#comments", as: "commentpage"
 
-  post "/commentpage/comment", to:"comments#create"
+  post "/commentpage/:tweet_id", to:"comments#create"
 
   resources :account_table, only:[:index, :show, :edit, :update] do
     member do

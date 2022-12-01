@@ -1,8 +1,23 @@
 <h1><%= @tweet.account_table.name %></h1>
 <h1><%= @tweet.contents %></h1>
 <h1><%= @tweet.created_at %></h1>
+<br>
+<br>
+<h2>コメント欄</h2>
 
-<%= form_for(:session , url:commentpage_comment) do |f| %>
+<div>
+    <% @comment.each do |t| %>
+    <div>
+        <%= t.account_table.name%>
+        <strong>
+        <%= t.content%>
+        </strong>
+        (<%= t.updated_at%>)
+    </div>
+    <%end%>
+</div>
+
+<%= form_for(:session , url:commentpage_path(tweet_id: @tweet_id)) do |f| %>
     <%= f.label :コメント %>
     <%= f.text_field :comment %>
     <%= f.submit "コメントする" %>
