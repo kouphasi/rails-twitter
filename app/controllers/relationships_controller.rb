@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
     def create
-        puts 1+1
-        puts params[:account_table_id]
+        # puts 1+1
+        # puts params[:account_table_id]
         current_user.follow(params[:account_table_id], current_user.id)
         redirect_to request.referer
     end

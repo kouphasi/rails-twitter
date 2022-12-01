@@ -4,7 +4,11 @@
    <% if current_user.following?(@user) %>
    <%= link_to 'フォロー外す', account_table_relationships_path(@user.id), method: :delete %>
    <% else %>
+   <% if @user.following?(current_user) %>
+   <%= link_to 'フォローバック', userpage_follow_path(account_table_id:@user.id), method: :post %>
+   <% else %>
    <%= link_to 'フォローする', userpage_follow_path(account_table_id:@user.id), method: :post %>
+   <% end %>
    <% end %>
    <% end %>
 </div>
