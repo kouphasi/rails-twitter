@@ -2,9 +2,9 @@
 <div>
    <% if current_user != @user %>
    <% if current_user.following?(@user) %>
-   <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn-sm btn-danger" %>
+   <%= link_to 'フォロー外す', account_table_relationships_path(@user.id), method: :delete %>
    <% else %>
-   <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class:"btn-sm btn-success" %>
+   <%= link_to 'フォローする', userpage_follow_path(account_table_id:@user.id), method: :post %>
    <% end %>
    <% end %>
 </div>

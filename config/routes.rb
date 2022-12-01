@@ -13,10 +13,14 @@ Rails.application.routes.draw do
   post "/signup", to: "sessions#setup"
   get "/new", to: "tweets#newp"
   post "/new", to: "tweets#add"
+  post "/comment", to:"comments#create"
 
   #  "/userpage", to: "relationships#user_page"
   get "/userpage/:id", to: "relationships#account", as: "accountpage"
+  post "/userpage/follow", to: "relationships#create"
   get "/commentpage/:id", to:"tweets#comments", as: "commentpage"
+
+  post "/commentpage/comment", to:"comments#create"
 
   resources :account_table, only:[:index, :show, :edit, :update] do
     member do

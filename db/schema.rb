@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_11_25_093255) do
 
   add_foreign_key "comments", "account_tables"
   add_foreign_key "comments", "tweets"
-  add_foreign_key "relationships", "AccountTable", column: "followed_id"
-  add_foreign_key "relationships", "AccountTable", column: "follower_id"
+  add_foreign_key "relationships", "account_tables", column: "followed_id"
+  add_foreign_key "relationships", "account_tables", column: "follower_id"
   add_foreign_key "tweets", "account_tables"
 end
