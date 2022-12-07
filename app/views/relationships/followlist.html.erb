@@ -1,0 +1,20 @@
+<h1><%= current_user.name %>さんのフォロー・フォロワー</h1>
+<h3>フォロー一覧</h3>
+<div>
+    <% @follow.each do |t| %>
+    <div>
+        <%=t.followed.name %>
+        <%= link_to "ツイートへ", accountpage_path(t.followed.id) %>
+    </div>
+    <%end%>
+</div>
+<h3>フォロワー一覧</h3>
+<div>
+    <% @follower.each do |t| %>
+    <div>
+        <%=t.follower.name %>
+        <%= link_to "ツイートへ", accountpage_path(t.follower.id) %>
+
+    </div>
+    <%end%>
+</div>

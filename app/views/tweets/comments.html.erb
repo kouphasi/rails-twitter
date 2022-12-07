@@ -1,6 +1,6 @@
-<h1><%= @tweet.account_table.name %></h1>
+<h2><%= @tweet.account_table.name %></h2>
 <h1><%= @tweet.contents %></h1>
-<h1><%= @tweet.created_at %></h1>
+<h3><%= @tweet.created_at %></h3>
 <br>
 <br>
 <h2>コメント欄</h2>
@@ -8,11 +8,13 @@
 <div>
     <% @comment.each do |t| %>
     <div>
-        <%= t.account_table.name%>
+        <%= t.account_table.name%>: 
         <strong>
         <%= t.content%>
         </strong>
+        <p>
         (<%= t.updated_at%>)
+        </p>
     </div>
     <%end%>
 </div>
