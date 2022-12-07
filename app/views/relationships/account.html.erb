@@ -12,3 +12,14 @@
    <% end %>
    <% end %>
 </div>
+
+<h3>ツイート</h3>
+<div>
+   <% @tweet.each do |t|  %>
+   <div>
+      <%= t.contents %>
+      <%= link_to "コメントへ", commentpage_path(t.id) %>
+   </div>
+   <%end%>
+</div>
+

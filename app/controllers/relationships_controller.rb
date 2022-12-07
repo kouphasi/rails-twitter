@@ -12,9 +12,15 @@ class RelationshipsController < ApplicationController
 
     def account
         @user = AccountTable.find(params[:id])
+        @tweet = Tweet.where(account_table_id: params[:id])
     end
     
     def user_page
         @user = AccountTable.find(params[:id])
+    end
+
+    def followlist
+        @follow = Relationship.where(follower_id: current_user.id)
+        @follower = Relationship.where(followed_id: current_user.id)
     end
 end

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   post "/commentpage/:tweet_id", to:"comments#create"
 
+  get "/followlist", to:"relationships#followlist"
+
   resources :account_table, only:[:index, :show, :edit, :update] do
     member do
       get :follows, :followers
