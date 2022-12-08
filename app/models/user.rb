@@ -1,4 +1,4 @@
-class AccountTable < ApplicationRecord
+class User < ApplicationRecord
     has_secure_password
     has_many :tweets
     has_many :follower, class_name: "Relationship", foreign_key: :follower_id
@@ -7,8 +7,8 @@ class AccountTable < ApplicationRecord
     has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
     has_many :comments, dependent: :destroy
 
-    def follow(account_table_id, current_user_id)
-        follower.create(followed_id: account_table_id, follower_id: current_user_id)
+    def follow(user_id, current_user_id)
+        follower.create(followed_id: user_id, follower_id: current_user_id)
     end
 
     def unfollow(user_id)

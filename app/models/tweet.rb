@@ -1,4 +1,4 @@
 class Tweet < ApplicationRecord
-  belongs_to :account_table
+  belongs_to :user
   has_many :comments, dependent: :destroy
 end

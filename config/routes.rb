@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get "/followlist", to:"relationships#followlist"
 
-  resources :account_table, only:[:index, :show, :edit, :update] do
+  resources :user, only:[:index, :show, :edit, :update] do
     member do
       get :follows, :followers
     end
