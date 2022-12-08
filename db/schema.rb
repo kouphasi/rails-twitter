@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 2022_11_25_093255) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id", null: false
+    t.integer "owner_id", null: false
     t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["owner_id"], name: "index_relationships_on_owner_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -49,6 +49,6 @@ ActiveRecord::Schema.define(version: 2022_11_25_093255) do
   add_foreign_key "comments", "tweets"
   add_foreign_key "comments", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
-  add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "relationships", "users", column: "owner_id"
   add_foreign_key "tweets", "users"
 end

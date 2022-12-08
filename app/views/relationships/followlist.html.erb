@@ -12,8 +12,8 @@
 <div>
     <% @follower.each do |t| %>
     <div>
-        <%=t.follower.name %>
-        <%= link_to "ツイートへ", accountpage_path(t.follower.id) %>
+        <%=t.owner.name %>
+        <%= link_to "ツイートへ", accountpage_path(t.owner.id) %>
 
     </div>
     <%end%>

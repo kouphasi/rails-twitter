@@ -20,7 +20,7 @@ class RelationshipsController < ApplicationController
     end
 
     def followlist
-        @follow = Relationship.where(follower_id: current_user.id)
+        @follow = Relationship.where(owner_id: current_user.id)
         @follower = Relationship.where(followed_id: current_user.id)
     end
 end
