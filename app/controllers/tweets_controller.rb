@@ -27,9 +27,6 @@ class TweetsController < ApplicationController
         params.require(:session).permit(:content)
     end
 
-    # def index
-    #     @tweets = Tweet.all
-    # end
 
     def comments
         @tweet = Tweet.find(params[:id])
