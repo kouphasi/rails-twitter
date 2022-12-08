@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
         @tweets = Tweet.all
     end
 
-    def newp
+    def newpost
         @tweet = Tweet.new
     end
 
@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
         if tweet.save
             redirect_to root_url
         else
-            redirect_to new_url
+            redirect_to tweet_new_url
         end
     end
 

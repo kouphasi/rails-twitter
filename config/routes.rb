@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   # root "hello#index"
 
   root "tweets#main"
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-  get "/signup", to: "sessions#entry"
-  post "/signup", to: "sessions#setup"
-  get "/new", to: "tweets#newp"
-  post "/new", to: "tweets#add"
+  get "/user/login", to: "sessions#new"
+  post "/user/login", to: "sessions#create"
+  delete "/user/logout", to: "sessions#destroy"
+  get "/user/signup", to: "sessions#entry"
+  post "/user/signup", to: "sessions#setup"
+  get "/tweet/new", to: "tweets#newpost"
+  post "/tweet/new", to: "tweets#add"
   post "/comment", to:"comments#create"
 
   #  "/userpage", to: "relationships#user_page"
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   post "/commentpage/:tweet_id", to:"comments#create"
 
-  get "/followlist", to:"relationships#followlist"
+  get "/relationship/followlist", to:"relationships#followlist"
 
   resources :user, only:[:index, :show, :edit, :update] do
     member do
