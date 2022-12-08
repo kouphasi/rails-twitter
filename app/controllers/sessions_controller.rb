@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
       puts "cannot save"
       render "entry"
     end
-    # redirect_to root_url
   end
 
   def destroy
