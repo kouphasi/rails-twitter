@@ -10,7 +10,6 @@ class RelationshipsController < ApplicationController
 
     def account
         @user = User.find(params[:id])
-        # @tweet = Tweet.where(user_id: params[:id])
         @tweet = @user.tweets
     end
     

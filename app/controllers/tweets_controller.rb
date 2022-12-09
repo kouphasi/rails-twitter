@@ -1,15 +1,15 @@
 class TweetsController < ApplicationController
-    before_action :check_logged_in_user, only:[:edit, :update, :destroy]
-
-    def main
+    before_action :check_logged_in_user
+    
+    def index
         @tweets = Tweet.all
     end
 
-    def newpost
+    def new
         @tweet = Tweet.new
     end
 
-    def add
+    def create
         t = tweet_params
         tweet = Tweet.new(t)
         # puts tweet

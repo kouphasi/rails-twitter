@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   # get "hello/link" => "hello#link"
   # root "hello#index"
 
-  root "tweets#main"
+  root "tweets#index"
   get "/user/login", to: "sessions#new"
   post "/user/login", to: "sessions#create"
   delete "/user/logout", to: "sessions#destroy"
   get "/user/signup", to: "sessions#entry"
   post "/user/signup", to: "sessions#setup"
-  get "/tweet/new", to: "tweets#newpost"
-  post "/tweet/new", to: "tweets#add"
+  get "/tweet/new", to: "tweets#new"
+  post "/tweet/new", to: "tweets#create"
   post "/comment", to:"comments#create"
 
   #  "/userpage", to: "relationships#user_page"
