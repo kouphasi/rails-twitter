@@ -1,6 +1,6 @@
 class RelationshipsController < ApplicationController
     def create
-        current_user.follow(params[:user_id], current_user.id)
+        current_user.follow(params[:user_id])
         redirect_to request.referer
     end
     def destroy
@@ -18,7 +18,7 @@ class RelationshipsController < ApplicationController
     end
 
     def followlist
-        @follow = current_user.owner
+        @follow = current_user.owners
         @follower = current_user.followed
     end
 end
