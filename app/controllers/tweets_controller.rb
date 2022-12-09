@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-    before_action :logged_in_user, only:[:edit, :update, :destroy]
+    before_action :check_logged_in_user, only:[:edit, :update, :destroy]
 
     def main
         @tweets = Tweet.all
