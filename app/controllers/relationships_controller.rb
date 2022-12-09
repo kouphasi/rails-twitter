@@ -10,7 +10,8 @@ class RelationshipsController < ApplicationController
 
     def account
         @user = User.find(params[:id])
-        @tweet = Tweet.where(user_id: params[:id])
+        # @tweet = Tweet.where(user_id: params[:id])
+        @tweet = @user.tweets
     end
     
     def user_page
@@ -18,7 +19,7 @@ class RelationshipsController < ApplicationController
     end
 
     def followlist
-        @follow = Relationship.where(owner_id: current_user.id)
-        @follower = Relationship.where(followed_id: current_user.id)
+        @follow = current_user.owner
+        @follower = current_user.followed
     end
 end
