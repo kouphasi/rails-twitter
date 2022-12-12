@@ -18,13 +18,10 @@ class SessionsController < ApplicationController
   end
 
   def setup
-    puts "setup started"
-    puts params
     @account = User.new(name:params[:session][:name], password:params[:session][:password])
     if @account.save
       redirect_to root_url
     else
-      puts "cannot save"
       render "entry"
     end
   end
@@ -33,5 +30,4 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
     end
-  # end
 end
