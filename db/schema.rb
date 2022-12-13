@@ -12,43 +12,43 @@
 
 ActiveRecord::Schema.define(version: 2022_11_25_093255) do
 
-  create_table "account_tables", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "account_table_id", null: false
+    t.integer "user_id", null: false
     t.integer "tweet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_table_id"], name: "index_comments_on_account_table_id"
     t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id", null: false
+    t.integer "owner_id", null: false
     t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["owner_id"], name: "index_relationships_on_owner_id"
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.text "contents"
-    t.integer "account_table_id", null: false
+    t.text "content"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_table_id"], name: "index_tweets_on_account_table_id"
+    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
-  add_foreign_key "comments", "account_tables"
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "comments", "tweets"
-  add_foreign_key "relationships", "account_tables", column: "followed_id"
-  add_foreign_key "relationships", "account_tables", column: "follower_id"
-  add_foreign_key "tweets", "account_tables"
+  add_foreign_key "comments", "users"
+  add_foreign_key "relationships", "users", column: "followed_id"
+  add_foreign_key "relationships", "users", column: "owner_id"
+  add_foreign_key "tweets", "users"
 end

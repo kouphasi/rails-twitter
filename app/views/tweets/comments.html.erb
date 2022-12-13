@@ -1,5 +1,5 @@
-<h2><%= @tweet.account_table.name %></h2>
-<h1><%= @tweet.contents %></h1>
+<h2><%= @tweet.user.name %></h2>
+<h1><%= @tweet.content %></h1>
 <h3><%= @tweet.created_at %></h3>
 <br>
 <br>
@@ -8,7 +8,7 @@
 <div>
     <% @comment.each do |t| %>
     <div>
-        <%= t.account_table.name%>: 
+        <%= t.user.name%>: 
         <strong>
         <%= t.content%>
         </strong>

@@ -1,15 +1,15 @@
-<%= link_to "フォロー/フォロワー一覧", followlist_path %>
+<%= link_to "フォロー/フォロワー一覧", relationship_followlist_path %>
 
 <h2>一覧</h2>
-<%= link_to "投稿", new_path %>
+<%= link_to "投稿", tweet_new_path %>
 <div>
     <% @tweets.each do |t| %>
         <div>
-            <%= t.account_table.name %>
-            <%= link_to "詳細へ", accountpage_path(t.account_table.id) %>
-            <%= t.contents %>
+            <%= t.user.name %>
+            <%= link_to "詳細へ", accountpage_path(t.user.id) %>
+            <%= t.content %>
             <%= link_to "コメントへ", commentpage_path(t.id) %>
         </div>
     <% end %>
 </div>
-<%= link_to "ログアウト", logout_path, method: :delete %>
+<%= link_to "ログアウト", user_logout_path, method: :delete %>
