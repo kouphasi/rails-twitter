@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-    before_action :redirect_if_has_not_logged_in?
+    before_action :redirect_if_has_not_logged_in
     
     def index
         @tweets = Tweet.all
