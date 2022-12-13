@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
         comment = params[:session][:comment]
         tweet = Tweet.find(params[:tweet_id])
         
-        comment = Comment.create(content: comment, user_id: current_user.id, tweet_id: tweet.id, isComment: true  )
+        comment = Comment.create(content: comment, user_id: current_user.id, tweet_id: tweet.id )
 
         if comment.save
             redirect_to request.referer
