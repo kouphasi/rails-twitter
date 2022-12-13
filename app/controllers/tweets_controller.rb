@@ -7,6 +7,7 @@ class TweetsController < ApplicationController
 
     def new
         @tweet = Tweet.new
+        @feeling = Feeling.all
     end
 
     def create
@@ -28,5 +29,16 @@ class TweetsController < ApplicationController
     def comments
         @tweet = Tweet.find(params[:id])
         @comment = Comment.where(tweet_id: params[:id])
+    end
+
+    #今のお気持ち
+    def quick
+        tweet = Tweet.new(content: Feeling.find(params[:id]).text)
+        tweet.user_id = current_user.id
+        if tweet.save
+            redirect_to root_url
+        else
+            redirect_to tweet_new_url
+        end
     end
 end
