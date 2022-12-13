@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
     before_action :redirect_if_has_not_logged_in
     
+    has_create_error = false
+
     def index
         @tweets = Tweet.all
     end
@@ -8,6 +10,13 @@ class TweetsController < ApplicationController
     def new
         @tweet = Tweet.new
         @feeling = Feeling.all
+        flag =  params[:error]
+        if flag == "1"
+            @error =true
+        else
+            @error = false
+        end 
+
     end
 
     def create
@@ -17,7 +26,8 @@ class TweetsController < ApplicationController
         if tweet.save
             redirect_to root_url
         else
-            redirect_to tweet_new_url
+            has_create_error = true
+            redirect_to tweet_new_url(error: 1)
         end
     end
 
