@@ -22,7 +22,7 @@ class TweetsController < ApplicationController
     end
 
     def tweet_params
-        params.require(:session).permit(:content)
+        params.require(:session).permit(:content, :feeling_id)
     end
 
 
@@ -31,14 +31,4 @@ class TweetsController < ApplicationController
         @comment = Comment.where(tweet_id: params[:id])
     end
 
-    #今のお気持ち
-    def quick
-        tweet = Tweet.new(content: Feeling.find(params[:id]).text)
-        tweet.user_id = current_user.id
-        if tweet.save
-            redirect_to root_url
-        else
-            redirect_to tweet_new_url
-        end
-    end
 end

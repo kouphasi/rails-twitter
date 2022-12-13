@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_13_021600) do
+ActiveRecord::Schema.define(version: 2022_12_13_051809) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "tweet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "feelings", force: :cascade do |t|
     t.string "text"
@@ -32,6 +42,8 @@ ActiveRecord::Schema.define(version: 2022_12_13_021600) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "feeling_id", null: false
+    t.index ["feeling_id"], name: "index_tweets_on_feeling_id"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
@@ -42,7 +54,10 @@ ActiveRecord::Schema.define(version: 2022_12_13_021600) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "tweets"
+  add_foreign_key "comments", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "owner_id"
+  add_foreign_key "tweets", "feelings"
   add_foreign_key "tweets", "users"
 end

@@ -2,14 +2,8 @@
 <%= form_for(:session , url:tweet_new_path) do |f| %>
     <%= f.label :投稿 %>
     <%= f.text_field :content %>
+    <%= f.label :今の気持ちは？ %>
+    <%= f.select :feeling_id, Feeling.all.map{|feeling| [feeling.text, feeling.id]}%>
     <%= f.submit "投稿" %>
 <% end %>
 
-<h2>即投稿しよう！</h2>
-<div style="display: flex;">
-    <%= button_to "元気", tweet_quick_path(id:1), method: :post %>
-    <%= button_to "悲し", tweet_quick_path(id:2), method: :post %>
-    <%= button_to "うれし", tweet_quick_path(id:7), method: :post %>
-    <%= button_to "苦し", tweet_quick_path(id:5), method: :post %>
-    <%= button_to "絶望", tweet_quick_path(id:6), method: :post %>
-</div>
