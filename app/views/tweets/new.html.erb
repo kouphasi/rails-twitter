@@ -1,4 +1,7 @@
 <h1>投稿</h1>
+
+<%= flash[:notice] %>
+
 <%= form_for(:session , url:tweet_create_path) do |f| %>
     <%= f.label :投稿 %>
     <%= f.text_field :content %>
@@ -6,6 +9,3 @@
     <%= f.select :feeling_id, Feeling.all.map{|feeling| [feeling.text, feeling.id]}%>
     <%= f.submit "投稿" %>
 <% end %>
-<% if @error %>
-<div style="color:red;" >入力に誤りがあります</div>
-<%end%>

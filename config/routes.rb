@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete "/user/logout", to: "sessions#destroy"
   get "/user/signup", to: "sessions#entry"
   post "/user/signup", to: "sessions#setup"
-  get "/tweet/new/:error", to: "tweets#new", as:"tweet_new"
+  get "/tweet/new", to: "tweets#new", as:"tweet_new"
   post "/tweet/new", to: "tweets#create", as:"tweet_create"
   post "/tweet/quick", to: "tweets#quick"
   post "/comment", to:"comments#create"

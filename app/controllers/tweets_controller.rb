@@ -10,12 +10,6 @@ class TweetsController < ApplicationController
     def new
         @tweet = Tweet.new
         @feeling = Feeling.all
-        flag =  params[:error]
-        if flag == "1"
-            @error =true
-        else
-            @error = false
-        end 
 
     end
 
@@ -26,8 +20,10 @@ class TweetsController < ApplicationController
         if tweet.save
             redirect_to root_url
         else
-            has_create_error = true
-            redirect_to tweet_new_url(error: 1)
+            #flash[:notice] = ""
+            #redirect_to
+            #と同じ
+            redirect_to tweet_new_url, notice: "正しく入力してください"
         end
     end
 
