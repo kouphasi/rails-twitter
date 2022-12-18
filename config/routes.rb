@@ -25,6 +25,11 @@ Rails.application.routes.draw do
 
   get "/relationship/followlist", to:"relationships#followlist"
 
+  get "/api/good/:user_id/isgood/:tweet_id", to:"goods#index"
+  get "/api/good/:user_id/good/:tweet_id", to:"goods#create"
+  get "/api/good/:user_id/bad/:tweet_id", to:"goods#delete"
+
+
   resources :user, only:[:index, :show, :edit, :update] do
     member do
       get :follows, :followers
