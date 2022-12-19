@@ -1,5 +1,6 @@
 window.onload = async function(){
     const button = document.getElementById("goodButton")
+    if(!button) return
     const user_id = Number(document.getElementById("user_id").value)
     const tweet_id = Number(document.getElementById("tweet_id").value)
 
