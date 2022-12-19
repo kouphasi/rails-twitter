@@ -26,15 +26,17 @@ class TweetsController < ApplicationController
             redirect_to tweet_new_url, notice: "正しく入力してください"
         end
     end
+    
+    def comments
+        @tweet = Tweet.find(params[:id])
+        @comment = Comment.where(tweet_id: params[:id])
+    end
 
+    private
     def tweet_params
         params.require(:session).permit(:content, :feeling_id)
     end
 
 
-    def comments
-        @tweet = Tweet.find(params[:id])
-        @comment = Comment.where(tweet_id: params[:id])
-    end
 
 end
