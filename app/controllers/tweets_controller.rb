@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
     before_action :redirect_if_has_not_logged_in
     
-    has_create_error = false
 
     def index
         @tweets = Tweet.all
