@@ -13,10 +13,8 @@ Rails.application.routes.draw do
   post "/user/signup", to: "sessions#setup"
   get "/tweet/new", to: "tweets#new", as:"tweet_new"
   post "/tweet/new", to: "tweets#create", as:"tweet_create"
-  post "/tweet/quick", to: "tweets#quick"
   post "/comment", to:"comments#create"
 
-  #  "/userpage", to: "relationships#user_page"
   get "/userpage/:id", to: "relationships#account", as: "accountpage"
   post "/userpage/follow", to: "relationships#create"
   get "/commentpage/:id", to:"tweets#comments", as: "commentpage"
