@@ -1,7 +1,6 @@
 class TweetsController < ApplicationController
     before_action :redirect_if_has_not_logged_in
     
-    has_create_error = false
 
     def index
         @tweets = Tweet.all
@@ -9,14 +8,7 @@ class TweetsController < ApplicationController
 
     def new
         @tweet = Tweet.new
-        @feeling = Feeling.all
-        flag =  params[:error]
-        if flag == "1"
-            @error =true
-        else
-            @error = false
-        end 
-
+        @feelings = Feeling.all
     end
 
     def create
@@ -26,19 +18,23 @@ class TweetsController < ApplicationController
         if tweet.save
             redirect_to root_url
         else
-            has_create_error = true
-            redirect_to tweet_new_url(error: 1)
+            #flash[:notice] = ""
+            #redirect_to
+            #と同じ
+            redirect_to tweet_new_url, notice: "正しく入力してください"
         end
     end
+    
+    def comments
+        @tweet = Tweet.find(params[:id])
+        @comment = Comment.where(tweet_id: params[:id])
+    end
 
+    private
     def tweet_params
         params.require(:session).permit(:content, :feeling_id)
     end
 
 
-    def comments
-        @tweet = Tweet.find(params[:id])
-        @comment = Comment.where(tweet_id: params[:id])
-    end
 
 end

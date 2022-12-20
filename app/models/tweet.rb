@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
-  belongs_to :feeling, optional: true
+  belongs_to :feeling
   has_many :goods, dependent: :destroy
 
 
