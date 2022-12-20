@@ -7,6 +7,7 @@ class TweetsController < ApplicationController
 
     def new
         @tweet = Tweet.new
+        @feelings = Feeling.all
     end
 
     def create
@@ -21,7 +22,7 @@ class TweetsController < ApplicationController
     end
 
     def tweet_params
-        params.require(:session).permit(:content)
+        params.require(:session).permit(:content, :feeling_id)
     end
 
 
@@ -29,4 +30,5 @@ class TweetsController < ApplicationController
         @tweet = Tweet.find(params[:id])
         @comment = Comment.where(tweet_id: params[:id])
     end
+
 end

@@ -5,9 +5,9 @@
 <div>
     <% @tweets.each do |t| %>
         <div>
-            <%= t.user.name %>
-            <%= link_to "詳細へ", accountpage_path(t.user.id) %>
-            <%= t.content %>
+            <%= t.user.name %>(feel: <%= t.feeling.text %>) 
+            <%= link_to "詳細へ", accountpage_path(t.user.id) %> 
+            <%= t.content %> 
             <%= link_to "コメントへ", commentpage_path(t.id) %>
         </div>
     <% end %>
