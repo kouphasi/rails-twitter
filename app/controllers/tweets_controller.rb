@@ -8,8 +8,7 @@ class TweetsController < ApplicationController
 
     def new
         @tweet = Tweet.new
-        @feeling = Feeling.all
-
+        @feelings = Feeling.all
     end
 
     def create
