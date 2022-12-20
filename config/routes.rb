@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  # get 'sessions/new'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # get "hello/index" => "hello#index"
-  # get "hello/link" => "hello#link"
-  # root "hello#index"
+
 
   root "tweets#index"
   get "/user/login", to: "sessions#new"
@@ -13,10 +9,9 @@ Rails.application.routes.draw do
   post "/user/signup", to: "sessions#setup"
   get "/tweet/new", to: "tweets#new"
   post "/tweet/new", to: "tweets#create"
-  post "/tweet/quick", to: "tweets#quick"
   post "/comment", to:"comments#create"
 
-  #  "/userpage", to: "relationships#user_page"
+
   get "/userpage/:id", to: "relationships#account", as: "accountpage"
   post "/userpage/follow", to: "relationships#create"
   get "/commentpage/:id", to:"tweets#comments", as: "commentpage"
