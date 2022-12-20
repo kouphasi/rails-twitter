@@ -1,26 +1,32 @@
-<h2><%= @tweet.user.name %></h2>
-<h1><%= @tweet.content %></h1>
-<h3><%= @tweet.created_at %></h3>
-<br>
-<br>
-<h2>コメント欄</h2>
-
 <div>
-    <% @comment.each do |t| %>
-    <div>
-        <%= t.user.name%>: 
-        <strong>
-        <%= t.content%>
-        </strong>
-        <p>
-        (<%= t.updated_at%>)
-        </p>
-    </div>
-    <%end%>
-</div>
+    <h2><%= @tweet.user.name %></h2>
+    <h1><%= @tweet.content %></h1>
+    <h3><%= @tweet.created_at %></h3>
+    <input type="hidden" id="user_id" value="<%= current_user.id%>" >
+    <input type="hidden" id="tweet_id" value="<%= @tweet.id%>" >
+    <button id="goodButton">♡</button>
+    <%= javascript_pack_tag "good_action" %>
+    <br>
+    <br>
+    <h2>コメント欄</h2>
 
-<%= form_for(:session , url:commentpage_path(tweet_id: @tweet_id)) do |f| %>
-    <%= f.label :コメント %>
-    <%= f.text_field :comment %>
-    <%= f.submit "コメントする" %>
-<% end %>
+    <div>
+        <% @comment.each do |t| %>
+        <div>
+            <%= t.user.name%>: 
+            <strong>
+            <%= t.content%>
+            </strong>
+            <p>
+            (<%= t.updated_at%>)
+            </p>
+        </div>
+        <%end%>
+    </div>
+
+    <%= form_for(:session , url:commentpage_path(tweet_id: @tweet_id)) do |f| %>
+        <%= f.label :コメント %>
+        <%= f.text_field :comment %>
+        <%= f.submit "コメントする" %>
+    <% end %>
+</div>

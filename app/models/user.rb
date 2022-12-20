@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :following_user, through: :owners, source: :followed # 自分がフォローしている人
     has_many :follower_user, through: :followed, source: :owners # 自分をフォローしている人
     has_many :comments, dependent: :destroy
+    has_many :goods, dependent: :destroy
     #インスタンスメソッドの定義
     def follow(user_id)
         #selfはオブジェクトそのものを取得している。->"user".follow
