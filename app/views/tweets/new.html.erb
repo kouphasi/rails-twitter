@@ -1,9 +1,11 @@
 <h1>投稿</h1>
-<%= form_for(:session , url:tweet_new_path) do |f| %>
+
+<%= flash[:notice] %>
+
+<%= form_for(:session , url:tweet_create_path) do |f| %>
     <%= f.label :投稿 %>
     <%= f.text_field :content %>
     <%= f.label :今の気持ちは？ %>
     <%= f.select :feeling_id, @feelings.map{|feeling| [feeling.text, feeling.id]}%>
     <%= f.submit "投稿" %>
 <% end %>
-
